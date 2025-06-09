@@ -22,7 +22,6 @@ export type LoginState =
   | { success: true; message: string }
   | { success: false; fieldErrors: FormFields["fieldErrors"] };
 
-// 🔥 prevState 타입 명시
 export async function Login(prevState: LoginState, formData: FormData): Promise<LoginState> {
   await new Promise((resolve) => setTimeout(resolve, 2000));
   const data = {
