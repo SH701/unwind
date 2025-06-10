@@ -1,6 +1,5 @@
 generator client {
   provider = "prisma-client-js"
-  output   = "../lib/generated/prisma"
 }
 
 datasource db {
@@ -10,10 +9,11 @@ datasource db {
 
 model User{
   id Int @id @default(autoincrement())
-  username String
+  username String @unique
   password String
   email String @unique
-  bio String
+  photo String?
+  bio String?
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
   tweet Tweet[]

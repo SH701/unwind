@@ -8,10 +8,10 @@ type Props = {
   placeholder?: string;
   required?: boolean;
   errors?: string;
-  icon: React.ReactNode;  // 🔥 icon prop 추가
+  icon:React.ReactNode;
 };
 
-export default function Input({ name, type, placeholder, required, errors, icon }: Props) {
+export default function Input({ name, type, placeholder, required, errors,icon }: Props) {
   return (
     <div className="flex flex-col">
       <div className="relative">
@@ -19,15 +19,15 @@ export default function Input({ name, type, placeholder, required, errors, icon 
           {icon}
         </div>
         <input
-          name={name}
-          type={type}
-          placeholder={placeholder}
-          required={required}
-          className={`border rounded-2xl py-1 pl-10 placeholder:text-sm w-70 focus:border-2
-            ${errors
-              ? "border-red-500 focus:ring-2 ring-red-500 focus:border-red-500"
-              : "border-gray-300 focus:border-blue-500"}`}
-        />
+           name={name}
+            type={type}
+            placeholder={placeholder}
+            required={required}
+            className={`border-2 rounded-xl py-1 pl-10 placeholder:text-sm w-full focus:outline-none
+              ${errors
+                ? "border-red-500 ring-1 ring-red-500"
+                :""}`}
+            />
       </div>
       {errors && <p className="text-red-500 text-sm mt-1">{errors}</p>}
     </div>
