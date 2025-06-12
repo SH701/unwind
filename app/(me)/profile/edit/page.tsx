@@ -16,9 +16,6 @@ export default async function EditProfilePage() {
           <XMarkIcon className="size-8 font-bold" />
         </Link>
       </div>
-
-   
-
       <EditForm
         initialUsername={user.username}
         initialAvatar={user.photo}

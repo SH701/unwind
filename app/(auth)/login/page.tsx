@@ -15,7 +15,7 @@ export default function Login() {
 
   return (
     <div className="min-h-screen w-full px-6 py-12 flex flex-col items-center">
-      <h1 className="text-4xl font-bold mb-10">Moments</h1>
+      <h1 className="text-4xl font-bold mb-10">Unwind</h1>
       <form
         action={action}
         className="flex flex-col gap-4 w-full max-w-md"

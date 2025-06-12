@@ -18,7 +18,7 @@ export default function CreateAccount() {
       <div className="w-full max-w-md flex flex-col gap-6">
         <div className="text-center flex flex-col gap-4">
           <h1 className="text-3xl font-bold text-gray-800">환영합니다!</h1>
-          <p className="text-sm text-gray-600">간단한 정보를 입력하고 Moments에 함께하세요.</p>
+          <p className="text-sm text-gray-600">간단한 정보를 입력하고 Unwind에 함께하세요.</p>
         </div>
         <form action={action} className="flex flex-col gap-4">
           <Input

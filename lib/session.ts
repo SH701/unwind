@@ -20,3 +20,7 @@ export async function LoginSession(user: SessionData) {
   session.id = user.id;
   await session.save();
 }
+export async function LogOut(){
+  const session = await getSession();
+  await session.destroy();
+}

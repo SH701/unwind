@@ -8,10 +8,11 @@ type Props = {
   placeholder?: string;
   required?: boolean;
   errors?: string;
+  className?:string;
   icon:React.ReactNode;
 };
 
-export default function Input({ name, type, placeholder, required, errors,icon }: Props) {
+export default function Input({ name, type, placeholder, required, errors,icon,className }: Props) {
   return (
     <div className="flex flex-col">
       <div className="relative">
@@ -26,7 +27,7 @@ export default function Input({ name, type, placeholder, required, errors,icon }
             className={`border-2 rounded-xl py-1 pl-10 placeholder:text-sm w-full focus:outline-none
               ${errors
                 ? "border-red-500 ring-1 ring-red-500"
-                :""}`}
+                :""}${className}`}
             />
       </div>
       {errors && <p className="text-red-500 text-sm mt-1">{errors}</p>}

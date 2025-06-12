@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body
-       className={`${hahmlet.className} h-full min-h-screen bg-sky-50 antialiased `}
+       className={`${hahmlet.className} h-full min-h-screen bg-green-100 antialiased `}
       >
         {children}
       </body>
