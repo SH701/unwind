@@ -1,7 +1,7 @@
 "use server";
 
 import { getSession } from "@/lib/session";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import db from "@/lib/db";
 
 export async function getTweet(id: string) {
@@ -15,7 +15,7 @@ export async function getTweet(id: string) {
   });
 
   if (!tweet) {
-    notFound();    // 없으면 404
+    notFound();  
   }
 
   return tweet;
@@ -30,8 +30,15 @@ export async function getOwner(tweetId:number){
   })
  return post?.userId === session.id;
 }
-export async function deleteTweet(id:number){
-    await db.tweet.delete({
-        where:{id}
-    })
+export async function deleteTweet(tweetId:number){
+  const post = await db.tweet.findUnique({
+    where:{id:tweetId}
+  })
+  if(!post){
+    throw new Error ("존재하지 않는 트윗입니다.")
+  }
+  await db.tweet.delete({
+    where:{id:tweetId}
+  })
+  redirect("/tweet")
 }

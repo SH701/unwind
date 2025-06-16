@@ -1,9 +1,9 @@
 import { formatTimeAgo } from "@/lib/constant";
-import { getAllTweets, writeTweet } from "./actions";
-import Button from "@/components/button";
+import { getAllTweets } from "./actions"
 import UserIcon from "@/components/icon";
 import Link from "next/link";
 import Etc from "@/components/etc";
+import AddTweet from "@/components/addtweet";
 
 export default async function Tweets() {
   const tweets = await getAllTweets();
@@ -11,10 +11,7 @@ export default async function Tweets() {
   return (
     <div className="pb-10 px-10 ">
     <div className="flex flex-col gap-5 bg-green-50 p-7">
-    <form action={writeTweet} className="space-y-4">
-        <textarea name="tweet" placeholder="Tweet anything..." className="textarea-bordered rounded w-full border p-3"></textarea>
-        <Button text="Tweet"/>
-    </form>
+   <AddTweet/>
     </div>
    <div className="mt-4 py-2 px-4 bg-green-50 rounded-lg shadow-lg">
        {tweets.map((tweet) => (

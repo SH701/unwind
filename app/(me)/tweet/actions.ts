@@ -2,7 +2,12 @@
 
 import db from "@/lib/db"
 import { getUser } from "../profile/actions";
+import z from "zod";
+import { revalidatePath } from "next/cache";
 
+const tweetSchema = z.object({
+    tweet: z.string().min(1, "내용을 입력해주세요").max(280, "최대 280자까지 입력 가능합니다."),
+});
 export async function getAllTweets(){
     const tweet = await db.tweet.findMany({
         orderBy:{created_at:"desc"},
@@ -17,19 +22,24 @@ export async function getAllTweets(){
     });
     return tweet
 }
-export async function writeTweet(formData:FormData):Promise<void>{
-    const content = formData.get("tweet")?.toString();
-    if (!content) {
-    throw new Error("Tweet 내용이 비어 있습니다.");
-    }
-    const user = await getUser();
-    if(!user!.id){
-        throw new Error ("로그인된 유저만 트윗을 작성할 수 있습니다.")
-    }
-    await db.tweet.create({
-        data:{
-            tweet:content,
-            userId:user!.id
-        }
-    })
+export async function writeTweet(prevState: unknown, formData: FormData) {
+  const tweet = formData.get("tweet");
+  const result = tweetSchema.safeParse({ tweet });
+  const user = await getUser();
+
+  if (!result.success) {
+    return {
+      success: false,
+      error: result.error.flatten().fieldErrors.tweet?.[0],
+    };
+  }
+
+  await db.tweet.create({
+    data: {
+      tweet: result.data.tweet,
+      userId: user!.id, 
+    },
+  });
+ revalidatePath("/");
+  return { success: true };
 }
