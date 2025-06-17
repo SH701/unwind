@@ -14,7 +14,7 @@ function Submit(){
 export default function AddTweet(){
     const [state,action] = useActionState(writeTweet,{success:false})
     return (
-        <form action={action} className="space-y-4 border-b pb-4 mb-6">
+        <form action={action} className="space-y-4 pb-4 mb-6">
       <textarea
         name="tweet"
         placeholder="Tweet anything..."

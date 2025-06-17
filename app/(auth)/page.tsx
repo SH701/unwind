@@ -1,10 +1,8 @@
-// app/page.tsx 또는 app/(public)/page.tsx
-
 import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="w-full h-screen flex flex-col items-center justify-center gap-8  px-4">
+    <div className="w-full h-screen flex flex-col items-center justify-center gap-8  px-4 pb-30 sm:pb-0">
       <div className="flex flex-col items-center gap-4">
         <span className="text-9xl">🌱</span>
         <h1 className="text-4xl font-bold text-gray-800">어서오세요!</h1>

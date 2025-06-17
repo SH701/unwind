@@ -7,8 +7,8 @@ export default async function Profile() {
   const user = await getUser();
 
   return (
-    <div className="min-h-screen w-full flex flex-col px-4 items-center">
-      <div className="flex items-center gap-5 border-2 border-gray-300 bg-white shadow-md rounded-xl p-4 w-full max-w-md">
+    <div className="max-h-screen w-full flex flex-col px-4 items-center">
+      <div className="flex items-center gap-5 border-2 border-gray-300 bg-white shadow-md rounded-xl p-4 w-full max-w-md mt-10">
         {user?.photo ? (
           <div className="w-12 h-12 relative rounded-full overflow-hidden">
             <Image
@@ -34,6 +34,11 @@ export default async function Profile() {
           로그아웃
         </button>
       </form>
+     <Link href="profile/secession" className="mt-3 w-full max-w-md">
+        <button type="submit" className="w-full btn text-white bg-red-500 hover:bg-red-400">
+          회원탈퇴
+        </button>
+      </Link>
     </div>
   );
 }

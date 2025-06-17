@@ -23,6 +23,15 @@ export async function Logout(){
     }
     redirect("/")
 }
+export async function ProfileSecession(){
+  const session = await getSession()
+  const userId = session.id;
+  await db.user.delete({
+    where: { id: userId },
+  });
+  await session.destroy();
+  redirect("/");
+}
 export async function getProfileUploadUrl(): Promise<{
   uploadUrl: string
   fileId: string

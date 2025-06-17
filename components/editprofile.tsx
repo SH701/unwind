@@ -12,10 +12,7 @@ interface EditFormProps {
   initialAvatar: string | null;
 }
 
-export default function EditForm({
-  initialUsername,
-  initialAvatar,
-}: EditFormProps) {
+export default function EditForm({initialUsername,initialAvatar}: EditFormProps) {
   const [username, setUsername] = useState(initialUsername);
   const [preview, setPreview] = useState<string | null>(initialAvatar);
   const { pending } = useFormStatus();
@@ -57,7 +54,7 @@ export default function EditForm({
               className="rounded-full"
             />
           ) : (
-            <UserIcon className="w-32 h-32 text-neutral-400  rounded-full p-2" />
+            <UserIcon className="w-32 h-32   rounded-full p-2" />
           )}
         </label>
       </div>
@@ -71,7 +68,7 @@ export default function EditForm({
           name="username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          className="w-full p-2 rounded-md bg-neutral-800 text-white"
+          className="w-full p-2 rounded-md bg-white"
           required
         />
       </div>
