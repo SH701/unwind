@@ -8,7 +8,7 @@ export default async function AddComments({ tweetId }: Props) {
   return (
     <form action={addComment} className="space-y-2">
       <input type="hidden" name="tweetId" value={tweetId} />
-      <div className="relative w-full mt-5">
+      <div className="relative w-full my-4">
         <input
           type="text"
           name="comment"

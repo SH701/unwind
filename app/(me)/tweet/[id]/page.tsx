@@ -19,7 +19,7 @@ import Image from "next/image"
   const comments = await getAllComments(id);
   return (
     <>
-    <div className="md:mx-30 sm:mx-20 mx-10 mb-10 flex flex-col">
+    <div className=" mb-10 flex flex-col mx-5">
       <div className="flex gap-4">
     <Back/>
     <div className="flex gap-1/2 pt-1">
@@ -29,7 +29,7 @@ import Image from "next/image"
      </div>
      </div>
     </div>
-    <div className="px-6 py-4 bg-white rounded shadow md:mx-30 sm:mx-20 mx-10">
+    <div className="px-6 py-4 bg-white rounded shadow mx-5">
       <div className="flex items-center gap-2 mb-2">
           {tweet.user.photo ? (
                 <Image
@@ -56,14 +56,25 @@ import Image from "next/image"
       )}
       </div>
       <p className="text-base pl-2">{tweet.tweet}</p>
+        {tweet.photo && (
+          <div className="mt-2">
+            <Image
+              src={tweet.photo}
+              alt="tweet image"
+              width={600}
+              height={400}
+              className="rounded-md object-contain max-h-96 w-full mb-2"
+            />
+          </div>
+        )}
        <Etc tweetId={id} liked={false} />
     </div>
-    <div className="border-b-2 border-gray-300 mt-10 mx-18"/>  
-    <div className="md:mx-30 sm:mx-20 mx-10">
+    <div className="border-b-2 border-gray-300 mt-10"/>  
+    <div className="mx-5">
    <AddComments tweetId={tweet.id}/>
     </div>
-    {comments.length === 0 ? null : (
-  <div className="mt-4 space-y-4 rounded-lg  md:mx-30 sm:mx-20 mx-10">
+    {comments.length === 0 ? <span className="flex items-center justify-center my-5">등록된 댓글이 없습니다.</span> : (
+  <div className=" space-y-4 rounded-lg mx-5 mb-10">
     {comments.map((comment) => (
       <div
         key={comment.id}
