@@ -57,7 +57,7 @@ export default function CreateAccount() {
         </form>
         <div className="text-md text-gray-700 flex items-center justify-center">
         <span>계정이 이미 존재하나요?</span>
-        <Link href="/login" className="text-sky-700 hover:underline pl-2">
+        <Link href="/login" className="text-green-700 font-medium hover:underline pl-2">
           로그인
         </Link>
       </div>

@@ -7,7 +7,7 @@ export default async function Profile() {
   const user = await getUser();
 
   return (
-    <div className="flex flex-col h-[calc(100vh-100px)] bg-green-100">
+    <div className="flex flex-col h-[calc(100vh-140px)] mt-10 ">
       <div className="flex-1 flex flex-col items-center px-4">
         <div className="flex items-center gap-5 border-2 border-gray-300 bg-white shadow-md rounded-xl p-4 w-full mt-10 max-w-md">
           {user?.photo ? (

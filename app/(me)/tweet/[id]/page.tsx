@@ -9,6 +9,7 @@ import AddComments from "@/components/addcomment";
 import DeleteComment from "@/components/deletecomment";
 import Etc from "@/components/etc";
 import Image from "next/image"
+import TweetDate from "@/components/tweetdate";
 
 
  export default async function TweetDetail({params,}: {params: Promise<{ id: string }>}) {
@@ -29,7 +30,7 @@ import Image from "next/image"
      </div>
      </div>
     </div>
-    <div className="px-6 py-4 bg-white rounded shadow mx-5">
+    <div className="px-6 py-4 bg-[#F0FDF4] rounded shadow mx-5">
       <div className="flex items-center gap-2 mb-2">
           {tweet.user.photo ? (
                 <Image
@@ -40,10 +41,10 @@ import Image from "next/image"
                   className="rounded-full size-10"
                 />
               ) : (
-                <UserIcon className="size-12 text-gray-400" />
+                <UserIcon className="size-12 " />
               )}
         <span className="font-bold">{tweet.user.username}</span>
-        <p className="text-[11px] font-bold text-gray-600">{formatTimeAgo(tweet.created_at)}</p>
+        <TweetDate date={formatTimeAgo(tweet.created_at)}/>
         {owner && (
         <div className="flex gap-2 ml-auto ">
           <Link href={`/tweet/${id}/edit`}>
@@ -55,7 +56,7 @@ import Image from "next/image"
         </div>
       )}
       </div>
-      <p className="text-base pl-2">{tweet.tweet}</p>
+      <p className="text-base pl-10">{tweet.tweet}</p>
         {tweet.photo && (
           <div className="mt-2">
             <Image
@@ -96,9 +97,7 @@ import Image from "next/image"
               <span className="font-semibold text-sm text-gray-800">
                 {comment.user.username}
               </span>
-              <span className="text-xs text-gray-500">
-                {formatTimeAgo(comment.created_at)}
-              </span>
+               <TweetDate date={formatTimeAgo(comment.created_at)}/>
             </div>
             {owner && (
               <DeleteComment id={comment.id} className="text-gray-400 hover:bg-red-400 transition" />

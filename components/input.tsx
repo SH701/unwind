@@ -16,7 +16,7 @@ export default function Input({ name, type, placeholder, required, errors,icon,c
   return (
     <div className="flex flex-col">
       <div className="relative">
-        <div className="absolute top-1/2 transform -translate-y-1/2 text-gray-400">
+        <div className="absolute top-1/2 transform -translate-y-1/2 ">
           {icon}
         </div>
         <input
@@ -24,7 +24,7 @@ export default function Input({ name, type, placeholder, required, errors,icon,c
             type={type}
             placeholder={placeholder}
             required={required}
-            className={`border-2 rounded-xl py-1 pl-10 placeholder:text-sm w-full focus:outline-none
+            className={`border-2 rounded-xl py-1 pl-10 placeholder:text-sm placeholder:text-gray-600 w-full focus:outline-none
               ${errors
                 ? "border-red-500 ring-1 ring-red-500"
                 :""}${className}`}

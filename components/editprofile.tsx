@@ -5,6 +5,7 @@ import { useFormStatus } from "react-dom";
 import Image from "next/image";
 import { updateProfile } from "@/app/(me)/profile/edit/actions";
 import UserIcon from "./icon";
+import DeletePhoto from "./deletephoto";
 
 
 interface EditFormProps {
@@ -28,8 +29,6 @@ export default function EditForm({initialUsername,initialAvatar}: EditFormProps)
   return (
     <form
       action={updateProfile}
-      method="post"
-      encType="multipart/form-data"
       className="space-y-4"
     >
       <div className="flex flex-col items-center gap-2">
@@ -57,8 +56,10 @@ export default function EditForm({initialUsername,initialAvatar}: EditFormProps)
             <UserIcon className="w-32 h-32   rounded-full p-2" />
           )}
         </label>
+        {preview?(
+          <DeletePhoto/> 
+        ):null}
       </div>
-
       <div className="flex flex-col mx-10">
         <label className="block text-md  mb-1">
           닉네임

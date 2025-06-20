@@ -1,10 +1,11 @@
-import { formatTimeAgo } from "@/lib/constant";
 import { getAllTweets } from "./actions";
 import UserIcon from "@/components/icon";
 import Link from "next/link";
 import Etc from "@/components/etc";
 import AddTweet from "@/components/addtweet";
 import Image from "next/image";
+import TweetDate from "@/components/tweetdate";
+import { formatTimeAgo } from "@/lib/constant";
 
 export default async function Tweets() {
   const tweets = await getAllTweets();
@@ -35,17 +36,14 @@ export default async function Tweets() {
                     className="rounded-full size-10"
                   />
                 ) : (
-                  <UserIcon className="size-10 text-gray-400" />
+                  <UserIcon className="size-10 " />
                 )}
 
                 <div className="flex flex-col flex-1">
                   <div className="flex gap-2">
                     <p className="text-sm font-semibold">{tweet.user.username}</p>
-                    <p className="text-[11px] font-bold text-gray-600 pt-0.5">
-                      {formatTimeAgo(tweet.created_at)}
-                    </p>
+                    <TweetDate date={formatTimeAgo(tweet.created_at)}/>
                   </div>
-
                   <p className="pt-2 text-sm">{tweet.tweet}</p>
 
                   {tweet.photo && (

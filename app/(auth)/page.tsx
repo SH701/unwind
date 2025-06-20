@@ -2,26 +2,24 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="w-full h-screen flex flex-col items-center justify-center gap-8  px-4 pb-30 sm:pb-0">
-      <div className="flex flex-col items-center gap-4">
-        <span className="text-9xl">🌱</span>
-        <h1 className="text-4xl font-bold text-gray-800">어서오세요!</h1>
-        <p className="text-gray-600 text-sm">지금 바로 Unwind 시작해보세요.</p>
-      </div>
+    <div className="w-full h-screen flex items-center justify-center bg-[#e9fbe5]">
+      <div className="w-full max-w-md  px-10 py-12 text-center space-y-6">
+        <div className="text-8xl">🌱</div>
+        <h1 className="text-3xl font-bold text-gray-800">Unwind에 오신 걸 환영해요</h1>
+        <p className="text-gray-600 text-base">
+          일상의 쉼표, 지금 바로 시작해보세요.
+        </p>
 
-      <div className="flex flex-col items-center gap-3 w-full max-w-xs">
         <Link
           href="/create-account"
-          className="w-full py-3 rounded-xl text-lg bg-blue-500 text-white text-center hover:bg-blue-600 transition-colors"
+          className="block w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 rounded-xl transition"
         >
           시작하기
         </Link>
-        <div className="flex gap-1 text-sm text-gray-700">
-          <span>이미 계정이 있나요?</span>
-          <Link
-            href="/login"
-            className="text-blue-600 hover:underline underline-offset-4"
-          >
+
+        <div className="text-sm text-gray-500">
+          이미 계정이 있나요?{" "}
+          <Link href="/login" className="text-green-700 font-medium hover:underline">
             로그인
           </Link>
         </div>

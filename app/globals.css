@@ -1,8 +1,28 @@
 @import "tailwindcss";
 
+html{
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+@layer base {
+  html.dark body {
+    @apply bg-black/80 text-white;
+  }
+
+  body {
+    @apply bg-[#e9fbe5] dark:bg-black/90
+  }
+
+  div,input {
+    @apply bg-transparent;
+  }
+
+  p, span, h1, h2, h3, h4, a, li,input {
+    color: inherit;
+  }
+}
 @layer components{
   .btn{
-    @apply w-full bg-sky-500 text-white font-medium border-none py-1
-    rounded-md text-center hover:bg-sky-400 transition-colors cursor-pointer ;
+    @apply w-full bg-green-600 hover:bg-green-700 text-white font-medium border-none py-1
+    rounded-md text-center  transition-colors cursor-pointer ;
   }
 }

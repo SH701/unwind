@@ -32,10 +32,7 @@ export async function ProfileSecession(){
   await session.destroy();
   redirect("/");
 }
-export async function getProfileUploadUrl(): Promise<{
-  uploadUrl: string
-  fileId: string
-}> {
+export async function getProfileUploadUrl(): Promise<{uploadUrl: string ,fileId: string}> {
   const res = await fetch(
     `https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/images/v2/direct_upload`,
     {

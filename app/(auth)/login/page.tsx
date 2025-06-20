@@ -14,7 +14,7 @@ export default function Login() {
   });
 
   return (
-    <div className="min-h-screen w-full px-6 py-12 flex flex-col items-center">
+    <div className="min-h-screen w-full px-6 py-12 flex flex-col items-center pt-24">
       <h1 className="text-4xl font-bold mb-10">Unwind</h1>
       <form
         action={action}
@@ -38,7 +38,7 @@ export default function Login() {
       </form>
       <div className="mt-6 text-sm text-gray-700">
         아직 계정이 없나요?{" "}
-        <Link href="/create-account" className="text-sky-700 hover:underline">
+        <Link href="/create-account" className="text-green-700 font-medium hover:underline">
           회원가입
         </Link>
       </div>
