@@ -1,6 +1,6 @@
 "use client";
 
-import { deleteTweet } from "@/app/(me)/tweet/[id]/actions"
+import { deleteTweet } from "@/app/(me)/post/[id]/actions"
 
 export default function TweetDeleteForm({ id }: { id: number }) {
   return (

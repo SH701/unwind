@@ -1,4 +1,4 @@
-import { addComment } from "@/app/(me)/tweet/[id]/actions";
+import { addComment } from "@/app/(me)/post/[id]/actions";
 import { ArrowTurnDownLeftIcon } from "@heroicons/react/24/solid";
 interface Props{
     tweetId:number

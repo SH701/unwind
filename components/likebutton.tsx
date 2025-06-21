@@ -1,6 +1,6 @@
 "use client";
 
-import { dislikePost, likePost } from "@/app/(me)/tweet/[id]/actions";
+import { dislikePost, likePost } from "@/app/(me)/post/[id]/actions";
 import { HandThumbUpIcon as HandOutline } from "@heroicons/react/24/outline";
 import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";

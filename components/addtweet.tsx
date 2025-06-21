@@ -1,6 +1,6 @@
 "use client"
 
-import { writeTweet } from "@/app/(me)/tweet/actions"
+import { writeTweet } from "@/app/(me)/post/actions"
 import { useActionState } from "react"
 import { PhotoIcon } from "@heroicons/react/24/outline";
 import Button from "./button";

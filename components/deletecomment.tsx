@@ -1,6 +1,6 @@
 "use client"
 
-import { deleteComment } from "@/app/(me)/tweet/[id]/actions"
+import { deleteComment } from "@/app/(me)/post/[id]/actions"
 
 interface Props{
   id:number;
