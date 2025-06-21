@@ -11,8 +11,8 @@ const hahmlet = Hahmlet({
 
 export const metadata: Metadata = {
   title:{
-    template:"%s | Tweet ",
-    default:"Tweet",
+    template:"%s | Unwind ",
+    default:"Unwind",
   },
 };
 
