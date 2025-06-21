@@ -9,19 +9,25 @@ import { getSession } from "@/lib/session";
 const tweetSchema = z.object({
     tweet: z.string().min(1, "내용을 입력해주세요").max(280, "최대 280자까지 입력 가능합니다."),
 });
-export async function getAllTweets(){
-    const tweet = await db.tweet.findMany({
-        orderBy:{created_at:"desc"},
-        include:{
-            user:{
-                select:{
-                    username:true,
-                    photo:true,
-                }
-            }
-        }
-    });
-    return tweet
+const pageSize = 5;
+export async function getAllTweets(page:number){
+    const tweets = await db.tweet.findMany({
+    skip: (page - 1) * pageSize,
+    take: pageSize,
+    orderBy: { created_at: "desc" },
+    include: {
+      user: {
+        select: {
+          username: true,
+          photo: true,
+        },
+      },
+    },
+  });
+  const totalcount = await db.tweet.count();
+  const totalpage = Math.ceil(totalcount/pageSize)
+
+  return {totalpage,tweets};
 }
 export async function writeTweet(prevState: unknown, formData: FormData) {
   const session = await getSession();
@@ -34,12 +40,9 @@ export async function writeTweet(prevState: unknown, formData: FormData) {
 
   const rawTweet = formData.get("tweet");
   const photo = formData.get("photo") as File;
-
   const result = tweetSchema.safeParse({ tweet: rawTweet });
-
   const tweetText = result.success ? result.data.tweet?.trim() : "";
 
-  // 글, 사진 둘 다 없는 경우 막기
   if (!photo || photo.size === 0) {
     if (!tweetText) {
       return { success: false, error: "글 또는 사진 중 하나는 필수입니다." };
@@ -53,7 +56,7 @@ export async function writeTweet(prevState: unknown, formData: FormData) {
 
   await db.tweet.create({
     data: {
-      tweet: tweetText ?? "", // tweet은 빈 문자열 가능하게 처리
+      tweet: tweetText ?? "",
       photo: photoUrl,
       userId: user.id,
     },

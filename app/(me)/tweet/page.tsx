@@ -7,9 +7,15 @@ import Image from "next/image";
 import TweetDate from "@/components/tweetdate";
 import { formatTimeAgo } from "@/lib/constant";
 
-export default async function Tweets() {
-  const tweets = await getAllTweets();
+interface Props{
+     searchParams: Promise<{ page?: string }>;
+}
+export const dynamic = "force-dynamic";
 
+export default async function Tweets({searchParams}:Props) {
+  const {page} = await searchParams;
+  const pages = Number(page||"1")
+  const {tweets,totalpage} = await getAllTweets(pages);
   return (
     <div className="pb-10 flex flex-col mx-5">
       <div className="flex flex-col gap-5 bg-green-50 p-7">
@@ -67,6 +73,22 @@ export default async function Tweets() {
           ))}
         </div>
       )}
+      <div className="flex gap-2 mt-6 justify-center">
+        {Array.from({ length: totalpage }).map((_, i) => {
+          const pageNum = i + 1;
+          return (
+            <Link
+              key={pageNum}
+              href={`/tweet?page=${pageNum}`}
+              className={`px-3 py-1 border rounded ${
+                pages === pageNum ? "bg-green-600 text-white" : "bg-gray-100"
+              }`}
+            >
+              {pageNum}
+            </Link>
+          );
+        })}
+      </div>
     </div>
   );
 }
