@@ -23,6 +23,6 @@ html{
 @layer components{
   .btn{
     @apply w-full bg-green-600 hover:bg-green-700 text-white font-medium border-none py-1
-    rounded-md text-center  transition-colors cursor-pointer ;
+    rounded-md text-center  transition-colors cursor-pointer disabled:cursor-not-allowed ;
   }
 }
