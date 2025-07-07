@@ -28,7 +28,7 @@ export default async function Tweets({searchParams}:Props) {
         <div className="mt-4 py-2 px-4 bg-green-50 rounded-lg shadow-lg">
           {tweets.map((tweet) => (
             <Link
-              href={`/tweet/${tweet.id}`}
+              href={`/post/${tweet.id}`}
               key={tweet.id}
               className="block border-t-2 first:border-t-0 border-gray-200 pb-3 pt-4"
             >
