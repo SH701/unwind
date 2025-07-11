@@ -25,7 +25,7 @@ export function middleware(req: NextRequest) {
   }
 
   if (cookie && isPublic) {
-    return NextResponse.redirect(new URL("/tweet", req.url));
+    return NextResponse.redirect(new URL("/post", req.url));
   }
 
   return NextResponse.next();
